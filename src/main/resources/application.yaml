@@ -1,0 +1,17 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:29092
+    consumer:
+      auto-offset-reset: earliest
+  cloud:
+    stream:
+      kafka:
+        binder:
+          functions:
+            process:
+              applicationId: MyGroupIdUsingApplicationId
+      bindings:
+        process-in-0:
+          bindings:
+            process-in-0:
+              destination: my-custom-topic
