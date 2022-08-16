@@ -5,7 +5,7 @@ spring:
       auto-offset-reset: earliest
   cloud:
     function:
-      definition: process;processTwo
+      definition: process;processTwo;processThree
     stream:
       kafka:
         binder:
@@ -14,12 +14,12 @@ spring:
               applicationId: MyGroupIdUsingApplicationId
             processTwo:
               applicationId: DiffGroupId
+            processThree:
+              applicationId: YetAnotherGroupId
       bindings:
         process-in-0:
-          bindings:
-            process-in-0:
-              destination: my-custom-topic
-        process-two-in-0:
-          bindings:
-            process-two-in-0:
-              destination: my-other-custom-topic
+          destination: my-custom-topic
+        processTwo-in-0:
+          destination: my-custom-topic,my-other-custom-topic
+        processThree-in-0:
+          destination: third-topic
